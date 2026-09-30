@@ -1,0 +1,32 @@
+The figure indicates the basin of attraction of disease free equilibrium and stable endemic equilibrium.
+Each point in the Infected x Vaccinated plane is the initial condition for the model, with the Parameters below with R=2.147 (the R in the unstable equilibrium...)
+
+
+Parameters:
+%% Abdu Parameters
+%mu = 0.0000365, gamma = 1/7, psi = 1/90, p = 0.9, theta = 1/1095, varepsilon = 0.8, sigma = 1 - 0.8, R0 = 3.5, N = 100
+N = 100;
+mu = 0.0000365; %mortality
+gamma = 1/7; %recovery rate
+R0 = 3.5;
+beta = R0*(mu+gamma)/N; %infection rate
+theta = 1/1095; % wanning vaccine immunity
+p = 0.90;
+phi = p*(mu+theta)/(1-p); %vaccination rate
+%phi = 0;
+sigma = 1 - 0.8; % vaccination 'failure'
+psi = 1/90; % wanning natural imunity
+
+Equilibria:
+** Equilibrium 1 **
+S=11.2929 I=0.16754 V=86.3926 R=2.147
+Eigenvalues
+-0.011489+0.0089289i -0.011489-0.0089289i 0.001327+0i -3.65e-05+0i
+** Equilibrium 2 **
+S=18.8106 I=2.3442 V=48.804 R=30.0412
+Eigenvalues
+-0.016003+0.034578i -0.016003-0.034578i -3.65e-05+0i -0.0027079+0i
+** Equilibrium 3 **
+S=10 I=0 V=90 R=0
+Eigenvalues
+-0.0094974 -3.65e-05 -0.011148 -0.0028579
