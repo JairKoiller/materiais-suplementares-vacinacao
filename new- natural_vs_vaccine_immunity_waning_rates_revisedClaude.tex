@@ -1,0 +1,663 @@
+% !TEX program = pdflatex
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\title{Natural and Vaccine-Induced Immunity:\\
+Approximate Waning Rates for Major Vaccine-Preventable Infections}
+\author{}
+\date{September 2026 (revised)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note compares the duration of protection following natural infection with
+the duration of protection following vaccination for a selection of important
+infectious diseases, including COVID-19. The information is based primarily on
+official material from the U.S. Centers for Disease Control and Prevention
+(CDC) --- chiefly the \emph{Pink Book}, CDC's reference text on vaccine-preventable
+diseases --- together with World Health Organization (WHO) material where
+appropriate.
+
+A numerical ``mean duration of immunity'' is not available for many diseases.
+Official sources frequently use expressions such as ``lifelong,'' ``probably
+lifelong,'' ``at least 20 years,'' or ``waning over several years.'' It would
+therefore be misleading to assign a spurious numerical mean to all diseases.
+The first part of the note reports the official qualitative or observational
+estimates, disease by disease. In the final table, these are converted --
+where, and only where, this is reasonably justified -- into an indicative
+waning rate
+\[
+        \lambda = \frac{1}{T},
+\]
+measured in $\mathrm{day}^{-1}$, where $T$ is a characteristic duration in
+days. Every table entry is coded using one of four symbols, defined
+immediately below the table: \textbf{0} (effectively lifelong, hence no
+finite waning rate), a \textbf{numerical value}, \textbf{N/D} (not
+determined precisely enough by the evidence), or \textbf{N/C} (not
+meaningfully reducible to a single characteristic rate).
+\end{abstract}
+
+\section{Interpretation of the comparison}
+
+It is important to distinguish three related but different quantities:
+
+\begin{enumerate}
+\item protection against infection or reinfection;
+\item protection against symptomatic disease; and
+\item protection against severe disease, hospitalization, or death.
+\end{enumerate}
+
+These quantities can have quite different durations. This is particularly
+important for influenza and COVID-19, for which immunity against infection
+can wane considerably faster than protection against severe disease.
+
+Moreover, ``waning'' is not generally a simple exponential process. The
+quantity $\lambda = 1/T$ used in the table below is therefore a
+\emph{characteristic inverse timescale}, not a directly measured biological
+decay constant. A genuine exponential model would require a well-defined
+survival or protection curve and would normally use a hazard or decay
+parameter estimated from longitudinal data. For several diseases discussed
+below, official sources decline to provide any such curve, and in those
+cases no number is invented.
+
+\section{Summary of official evidence}
+
+\subsection{Measles}
+
+The CDC states that immunity following natural measles infection is
+lifelong; this observation dates at least to Peter Panum's 1846 description
+of the disease (Ref.~\ref{ref:pinkbook-ch13}). For measles-containing
+vaccine, the CDC states that both serologic and epidemiologic evidence
+indicate that vaccine-induced immunity is long-term and probably lifelong in
+most persons. After two doses, more than 99\% of persons develop serologic
+evidence of immunity, and persons who appear to lose antibody typically show
+a rapid (anamnestic) response on re-exposure, suggesting that protection
+persists even when circulating antibody is low (Ref.~\ref{ref:pinkbook-ch13}).
+
+Thus, for both natural infection and vaccination, the appropriate
+description is essentially lifetime protection rather than a finite mean
+duration.
+
+\subsection{Mumps}
+
+Mumps is the clearest exception among the MMR-preventable diseases. Natural
+mumps infection is generally described as conferring lifelong immunity, but
+this characterization is somewhat softer than for measles or rubella:
+reinfections, though uncommon, are recognized to occur.
+
+Vaccine-induced immunity is where mumps differs most sharply from measles
+and rubella. The CDC's Pink Book chapter on mumps quantifies vaccine
+\emph{effectiveness} (78\% after one dose, 88\% after two doses) but --
+unlike the measles, rubella, or polio chapters -- does not offer any
+official statement of the \emph{duration} of protection
+(Ref.~\ref{ref:pinkbook-ch15}). CDC's current public-facing summary states
+only that ``immunity against mumps may decrease over time''
+(Ref.~\ref{ref:cdc-measles-vax}). In the absence of an official duration, we
+draw on a widely cited peer-reviewed academic estimate: pooling six
+vaccine-effectiveness studies with a dynamic transmission model, Lewnard and
+Grad estimated that vaccine-derived protection against mumps wanes with a
+mean duration of 27 years (95\% confidence interval, 16--51 years) after
+vaccination, and that this waning -- rather than viral evolution -- explains
+the resurgence of mumps among vaccinated young adults in the United States
+since 2006 (Ref.~\ref{ref:lewnard-grad}). This is an academic modeling
+estimate, not an official CDC or WHO figure, and it is flagged as such in
+the table below.
+
+\subsection{Rubella}
+
+The CDC reports that more than 90\% of vaccinated persons have protection
+against clinical rubella for at least 15 years, and that follow-up studies
+indicate that one dose provides long-term, probably lifelong, protection.
+Although antibody titers wane in the years after vaccination, the CDC notes
+there is no evidence this leads to significant susceptibility to clinical
+rubella or congenital rubella syndrome (Ref.~\ref{ref:pinkbook-ch20}).
+Natural infection is generally regarded as producing long-lasting immunity.
+
+Because the CDC's own bottom-line characterization of the vaccine is
+``probably lifelong'' -- with the 15-year figure serving as supporting
+evidence for that conclusion rather than as the conclusion itself -- rubella
+vaccine, like the measles vaccine, is treated below as falling in the
+``effectively lifelong'' category rather than being assigned a finite rate.
+This differs from the earlier draft of this note, which had, inconsistently,
+converted the 15-year figure directly into a rate while treating comparably
+worded statements for other diseases as indicating zero waning; the revision
+here applies one rule uniformly, and it is discussed further below the
+table.
+
+\subsection{Varicella}
+
+Following vaccination, the CDC reports that immunity appears long-lasting
+and is probably permanent in the majority of recipients. More than 90\% of
+vaccine responders maintain antibody for at least six years, with antibody
+also documented seven to ten years after vaccination in Japanese studies
+(Ref.~\ref{ref:pinkbook-ch22}). As with rubella, these interim data points
+support the CDC's ``probably permanent'' conclusion rather than replacing it
+with a finite number.
+
+Natural varicella infection generally produces lifetime immunity, although
+the precise duration is not represented by a single experimentally measured
+mean; second occurrences of chickenpox are uncommon in immunocompetent
+persons.
+
+\subsection{Hepatitis A}
+
+The CDC states plainly that the exact duration of protection following
+hepatitis A vaccination is unknown -- a materially different, more
+open-ended statement than the ``probably lifelong'' language used for
+measles, rubella, varicella, or polio. Anti-HAV has persisted for at least
+25 years in adults vaccinated as children under the older three-dose
+schedule used before 1999, and for at least 20 years in adults who received
+a two-dose schedule. Mathematical modeling and antibody-kinetic studies
+estimate that detectable antibody could persist for 40 years or longer
+(Ref.~\ref{ref:pinkbook-ch9}). Because the CDC explicitly withholds a
+``lifelong'' characterization here, these figures are used below as the
+basis for a genuine (upper-bound) numerical rate.
+
+Natural hepatitis A infection is generally regarded as producing durable,
+essentially lifelong immunity.
+
+\subsection{Hepatitis B}
+
+Hepatitis B vaccination produces long-lasting immunologic memory. The CDC
+reports that immune memory remains intact for more than 30 years following
+immunization, and that both adults and children with declining antibody
+levels remain protected against clinically significant infection because of
+a rapid anamnestic response on exposure. Booster doses are not recommended
+for immunocompetent persons (Ref.~\ref{ref:pinkbook-ch10}).
+
+The interpretation of \emph{natural} immunity is fundamentally more
+complicated, because infection can either resolve with immunity or become
+chronic, and these are qualitatively different outcomes rather than two
+points on the same waning curve. For this reason -- discussed further below
+-- natural hepatitis B immunity is not assigned a single characteristic
+rate at all; the duration of protective immunity after a resolved infection
+should in any case not be confused with the natural history of chronic
+hepatitis B infection itself.
+
+\subsection{Poliomyelitis}
+
+Natural poliovirus infection produces long-lasting immunity. The CDC
+describes immunity after a complete vaccination series -- with either
+inactivated (IPV) or live oral (OPV) vaccine -- as probably lifelong,
+while noting that the precise duration cannot be experimentally pinned down
+to a single mean value (Ref.~\ref{ref:pinkbook-ch18}).
+
+\subsection{Pertussis}
+
+Pertussis provides a particularly useful contrast. The CDC states
+explicitly that immunity following \emph{Bordetella pertussis} infection is
+not permanent (Ref.~\ref{ref:pinkbook-ch16}). Published epidemiological
+estimates place the duration of natural protection in the range of roughly
+four to twenty years, depending on the study and the definition of
+protection used.
+
+Vaccine-induced immunity is shorter still. Protection following
+acellular pertussis vaccination (DTaP/Tdap) wanes appreciably over
+approximately four to five years, which is a principal reason booster doses
+are recommended (Ref.~\ref{ref:pinkbook-ch16}).
+
+\subsection{Influenza}
+
+Influenza differs fundamentally from the diseases above because immunity is
+shaped not only by waning immune responses but also by the antigenic
+evolution (``drift'') of the circulating virus. The CDC states explicitly,
+as an official practical conclusion, that ``for practical purposes, the
+duration of immunity following influenza vaccination is less than one year
+because of vaccine-induced antibody waning and antigenic drift of
+circulating influenza viruses'' (Ref.~\ref{ref:pinkbook-ch12}). Because this
+is an explicit, official, single-number statement, it is used below as a
+genuine (if composite) rate for the vaccine.
+
+No comparable official statement exists for the duration of \emph{natural}
+post-infection immunity to influenza. This is not merely an oversight: a
+single number would conflate true immunological waning (which, against an
+unchanged strain, may be prolonged) with antigenic drift of the virus
+itself (which can defeat even fully intact immunity within a season). In
+the absence of an official figure isolating the two effects, natural
+influenza immunity is left undetermined below rather than assumed equal to
+the vaccine figure, as the earlier draft of this note had done.
+
+\subsection{Human papillomavirus (HPV)}
+
+Natural HPV infection does not reliably produce durable protective immunity
+against subsequent infection; reinfection and infection with additional
+HPV types can occur. This is a qualitatively different situation from
+``fast waning'' -- for many infections, robust cross-protective immunity
+is never clearly established in the first place, so there is no single
+protection curve to characterize.
+
+HPV vaccination, by contrast, produces strong and durable antibody
+responses. The CDC's Pink Book states that ongoing monitoring has
+demonstrated vaccine effectiveness above 90\%, with no waning of immunity
+through at least 10 to 12 years of follow-up (Ref.~\ref{ref:pinkbook-ch11}),
+consistent with CDC's public-facing statement that protection lasts more
+than 10 years without becoming less effective and that no data indicate
+protection lessens over time (Ref.~\ref{ref:cdc-hpv-safety}). As with
+hepatitis A, this is phrased as an absence of observed waning within a
+follow-up window, not as an affirmative ``lifelong'' finding, so it is used
+below as the basis for a genuine (upper-bound) numerical rate rather than
+being coded as zero.
+
+\subsection{COVID-19}
+
+COVID-19 requires particular caution. Natural infection produces immune
+responses in most individuals, but protection against reinfection changes
+with time and with the emergence of antigenically different variants. The
+WHO's 2021 scientific brief on natural immunity reported that, in the
+evidence available at the time, most infected people had robust protective
+immune responses for at least 6--8 months, while explicitly cautioning that
+this finding ``should not be interpreted as a fixed biological expiration
+date'' and flagging that variants of concern could alter the picture
+(Ref.~\ref{ref:who-brief}).
+
+Vaccine-induced protection shows a similar pattern but is explicitly
+bifurcated by endpoint in official communications: protection against
+infection wanes over a period of months, while protection against severe
+disease, hospitalization, and death generally persists substantially
+longer. Updated vaccines are recommended precisely because both immune
+waning and antigenic evolution alter protection over time.
+
+Unlike influenza, no official source commits to a single practical duration
+figure for COVID-19 that spans both endpoints and both exposure routes.
+For this reason, neither natural nor vaccine-induced COVID-19 immunity is
+reduced to a single rate in the table below; both are coded as not
+meaningfully comparable via one characteristic waning rate, which is a
+stronger conclusion than simply lacking a number, and is consistent with
+how official sources themselves discuss COVID-19 immunity.
+
+\subsection{A note on the stability of ``official'' sources in 2025--2026}
+
+Between 2025 and 2026, U.S. federal vaccine recommendations went through an
+unusually turbulent period: the Secretary of Health and Human Services
+replaced the full membership of the Advisory Committee on Immunization
+Practices (ACIP) in 2025, ACIP subsequently revised several recommendations
+(including moving the birth-dose hepatitis B recommendation from universal
+to shared clinical decision-making, discontinuing preference for the
+combination MMRV vaccine, and recommending a single-dose HPV schedule), and
+a federal court stayed both the resulting 2026 childhood immunization
+schedule and the disputed ACIP appointments pending litigation
+(Ref.~\ref{ref:crs-acip}). These disputes concern vaccination
+\emph{schedules and policy}, not the underlying serologic and
+epidemiologic evidence on duration of protection summarized above, which
+predates this period and is unaffected by it. Readers should nonetheless be
+aware that ``the official CDC position'' has been an unusually moving
+target in this specific window, and should check current primary sources
+for anything schedule-related.
+
+\section{Why inverse duration is used}
+
+Suppose, purely as a phenomenological approximation, that a protection
+timescale is represented by $T$ days. We define the corresponding
+characteristic waning rate by
+\[
+       \boxed{\lambda = \frac{1}{T}\quad \mathrm{day}^{-1}}.
+\]
+
+This definition is useful for comparing orders of magnitude. For example,
+
+\[
+\begin{array}{c|c}
+T & 1/T\;(\mathrm{day}^{-1})\\
+\hline
+1\ {\rm year\ (365\ days)} & 2.74\times 10^{-3}\\
+5\ {\rm years} & 5.48\times 10^{-4}\\
+10\ {\rm years} & 2.74\times 10^{-4}\\
+20\ {\rm years} & 1.37\times 10^{-4}\\
+27\ {\rm years} & 1.01\times 10^{-4}\\
+40\ {\rm years} & 6.85\times 10^{-5}
+\end{array}
+\]
+
+(All year-to-day conversions in this note use 365 days per year, for
+consistency; this introduces no meaningful error at the precision used
+here.) These numbers should be read as inverse characteristic durations,
+not as experimentally established exponential decay constants.
+
+For lifelong immunity, it is more scientifically honest to write ``the
+waning rate is effectively zero on the finite epidemiological timescales
+considered'' than to assign an arbitrary human life expectancy as $T$.
+Accordingly, the numerical table below uses the symbol $0$ whenever the
+official source's own bottom-line characterization is ``lifelong'' or
+``probably lifelong,'' even if a finite interim duration is cited elsewhere
+in the source as supporting evidence for that conclusion.
+
+\section{Numerical comparison}
+
+The table below is deliberately conservative and follows one rule
+throughout: a number is entered only when the cited source's own
+substantive conclusion is a finite, bounded duration -- not when a finite
+duration merely appears as an intermediate data point supporting a
+``lifelong'' conclusion, and not when the underlying process cannot be
+sensibly reduced to a single rate at all. Every cell in the last three
+columns is coded using exactly one of four symbols, defined immediately
+below the table. Diseases are grouped by the value of the ratio in the
+final column, in the order $0$, then a nonzero number, then N/C, then N/D.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.0cm}
+                  >{\raggedright\arraybackslash}p{2.8cm}
+                  >{\raggedright\arraybackslash}p{2.75cm}
+                  >{\raggedleft\arraybackslash}p{1.9cm}
+                  >{\raggedleft\arraybackslash}p{1.9cm}
+                  >{\raggedleft\arraybackslash}p{1.7cm}}
+\caption{Indicative waning rates, writing $\theta \equiv \lambda_{\rm
+natural} = 1/T_{\rm natural}$ for the characteristic natural-immunity
+waning rate and $\psi \equiv \lambda_{\rm vaccine} = 1/T_{\rm vaccine}$ for
+the characteristic vaccine-immunity waning rate (both in
+$\mathrm{day}^{-1}$). Diseases are grouped by the value of $\theta/\psi$,
+coded as described below the table.}
+\label{tab:waning}\\
+\toprule
+Disease & Natural immunity: official characterization & Vaccine immunity:
+official characterization & Natural $\theta$ & Vaccine $\psi$
+& $\theta/\psi$\\
+\midrule
+\endfirsthead
+\toprule
+Disease & Natural immunity: official characterization & Vaccine immunity:
+official characterization & Natural $\theta$ & Vaccine $\psi$
+& $\theta/\psi$\\
+\midrule
+\endhead
+\midrule \multicolumn{6}{r}{\emph{(continued on next page)}}\\ \midrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{6}{l}{\textbf{Group 1: $\theta/\psi = 0$} (natural immunity effectively non-waning; vaccine wanes at a finite rate)}\\
+\midrule
+
+Mumps &
+Generally lifelong, but reinfection documented more often than for measles/rubella &
+No official duration; academic model: mean 27 yr (95\% CI 16--51 yr) &
+$0$ &
+$1.0\times10^{-4}$ \newline (0.5--1.7$\times10^{-4}$) &
+$0$ \\
+
+Hepatitis A &
+Essentially lifelong &
+CDC: exact duration unknown; documented $\geq$20--25 yr; modeled $\geq$40 yr &
+$0$ &
+$\leq 1.37\times10^{-4}$ \newline (as low as $6.85\times10^{-5}$ under modeling) &
+$0$\\
+
+\midrule
+\multicolumn{6}{l}{\textbf{Group 2: $\theta/\psi$ a nonzero number} (both mechanisms wane at a finite rate)}\\
+\midrule
+
+Pertussis &
+CDC: not permanent; published epidemiological estimates $\approx$4--20 yr &
+Wanes appreciably over $\approx$4--5 yr (acellular vaccine) &
+$1.37\times10^{-4}$--$6.85\times10^{-4}$ &
+$5.48\times10^{-4}$--$6.85\times10^{-4}$ &
+$\approx0.2$--$1.25$ \\
+
+\midrule
+\multicolumn{6}{l}{\textbf{Group 3: $\theta/\psi =$ N/C} (not meaningfully comparable via one characteristic rate)}\\
+\midrule
+
+Measles &
+Lifelong (Panum, 1846) &
+Long-term, probably lifelong; $>$99\% seroconvert after 2 doses &
+$0$ &
+$0$ &
+N/C \\
+
+Rubella &
+Long-lasting / essentially lifelong &
+$\geq$15 yr documented; officially ``probably lifelong'' &
+$0$ &
+$0$ &
+N/C \\
+
+Varicella &
+Long-lasting; second episodes uncommon &
+Antibody documented $\geq$6--10 yr; officially ``probably permanent'' &
+$0$ &
+$0$ &
+N/C \\
+
+Poliomyelitis &
+Long-lasting &
+IPV and OPV both officially ``probably lifelong'' &
+$0$ &
+$0$ &
+N/C\\
+
+Hepatitis B &
+Heterogeneous: resolves with immunity, or becomes chronic; not one process &
+Immune memory documented $\geq$30 yr; boosters not advised in immunocompetent adults &
+N/C &
+$\leq 9.13\times10^{-5}$ &
+N/C \\
+
+HPV &
+No reliable durable natural protection; not a simple waning process &
+CDC: $>$90\% effective, no waning observed through 10--12 yr &
+N/C &
+$\leq2.74\times10^{-4}$ &
+N/C \\
+
+COVID-19 &
+WHO (2021): most had robust responses $\geq$6--8 mo against reinfection; explicitly not a fixed expiry; variant-dependent &
+Protection vs.\ infection wanes over months; vs.\ severe disease persists longer; no single official figure &
+N/C &
+N/C &
+N/C \\
+
+\midrule
+\multicolumn{6}{l}{\textbf{Group 4: $\theta/\psi =$ N/D} (not determined precisely enough by official evidence)}\\
+\midrule
+
+Influenza &
+No official duration; confounded with antigenic drift &
+CDC: practically $<$1 yr, from waning \emph{and} antigenic drift &
+N/D &
+$\gtrsim2.74\times10^{-3}$ &
+N/D \\
+
+\end{longtable}
+
+\subsection*{Key to the table}
+
+\begin{description}[leftmargin=2.2cm,style=nextline]
+\item[$0$] Effectively lifelong protection, hence a zero waning rate on the
+epidemiological timescales considered here. Used whenever the cited
+source's own substantive conclusion is ``lifelong'' or ``probably
+lifelong,'' even if a shorter documented interval is cited elsewhere in the
+same source as supporting evidence.
+\item[numerical value] A defensible finite characteristic rate. Used only
+when the cited source's own conclusion is itself a bounded, finite
+duration (an observed floor, a modeled estimate, or an explicit practical
+figure) rather than an affirmation of durability. Where the underlying
+duration is itself a range or a confidence interval, the corresponding
+range of $\theta$ or $\psi$ is given.
+\item[N/D] Not determined sufficiently well by the official evidence. Used
+when a finite characteristic duration plausibly exists in principle but no
+official source states or bounds it (natural influenza immunity is the
+clearest case here).
+\item[N/C] Not meaningfully comparable using one characteristic waning
+rate. Used when the underlying phenomenon cannot be sensibly reduced to a
+single decay parameter at all -- for example, because natural infection
+outcomes are qualitatively heterogeneous (hepatitis B), because natural
+infection does not reliably establish protective immunity in the first
+place (HPV), because two protection endpoints diverge too far to summarize
+in one number (COVID-19), or because a ratio would otherwise involve
+dividing by, or into, an undefined or ill-posed quantity.
+\end{description}
+
+A methodological note: several of these classifications required a
+judgment call, and a reasonable person could draw some of these lines
+differently -- most notably for rubella and varicella vaccine, discussed in
+Sections 2.3 and 2.4 above, where an interim documented duration exists
+alongside an official ``probably lifelong'' conclusion. The rule applied
+throughout this revision is to code according to the source's own
+substantive conclusion, not the most conservative number appearing
+anywhere in its supporting text; this is a change from the earlier version
+of this note, which applied that rule inconsistently across diseases.
+
+The ratio column, $\theta/\psi$, follows directly from the coding of its
+numerator $\theta$ and denominator $\psi$: a ratio of exactly $0$ is entered
+only when $\theta$ is coded $0$ and $\psi$ is a genuine finite number
+(giving a mathematically exact zero, not merely an approximation); the
+ratio is coded N/C whenever \emph{either} $\theta$ or $\psi$ is itself $0$
+paired with $0$, or is coded N/C; and it is coded N/D when either component
+is coded N/D. Note that this differs from, and corrects, the earlier
+version of this table, which entered ``$\infty$'' for several diseases
+where both rates were effectively zero -- a case where $\theta/\psi$ is
+actually indeterminate ($0/0$), not infinite.
+
+\paragraph{Important qualification.} The COVID-19 and influenza entries
+require special care. Even where a number is given for influenza vaccine
+(the one case with an explicit official practical figure), it reflects a
+mixture of true immunological waning and antigenic drift of the circulating
+virus, not a pure decay constant. The COVID-19 figures discussed in the
+text above are deliberately \emph{not} carried into the table as numbers,
+precisely because official sources themselves decline to summarize
+COVID-19 immunity with one figure; none of this should be read as implying
+that protection disappears abruptly at any of the quoted intervals.
+
+\section{Official references}
+
+\begin{enumerate}
+
+\item \label{ref:pinkbook-ch1} CDC, \emph{Pink Book, Chapter 1: Principles
+of Vaccination}. Explains active immunity, immunologic memory, and the
+general distinction between immunity acquired through infection and
+through vaccination.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html}
+
+\item \label{ref:pinkbook-ch9} CDC, \emph{Pink Book, Chapter 9: Hepatitis
+A}. States that the exact duration of protection after vaccination is
+unknown, and reports persistence of anti-HAV for at least 20--25 years and
+model-based estimates of 40 years or longer.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-9-hepatitis-a.html}
+
+\item \label{ref:pinkbook-ch10} CDC, \emph{Pink Book, Chapter 10: Hepatitis
+B}. Reports that immune memory remains intact for more than 30 years after
+vaccination and that booster doses are not recommended for immunocompetent
+persons.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-10-hepatitis-b.html}
+
+\item \label{ref:pinkbook-ch11} CDC, \emph{Pink Book, Chapter 11: Human
+Papillomavirus}. Reports vaccine effectiveness above 90\% with no waning of
+immunity observed through at least 10 to 12 years of follow-up.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-11-human-papillomavirus.html}
+
+\item \label{ref:cdc-hpv-safety} CDC, \emph{HPV Vaccine Safety and
+Effectiveness Data}. States that protection lasts more than 10 years
+without becoming less effective and that no data indicate waning over time.
+\url{https://www.cdc.gov/hpv/hcp/vaccination-considerations/safety-and-effectiveness-data.html}
+
+\item \label{ref:pinkbook-ch12} CDC, \emph{Pink Book, Chapter 12:
+Influenza}. States that, for practical purposes, the duration of immunity
+following influenza vaccination is less than one year, due to a
+combination of antibody waning and antigenic drift.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-12-influenza.html}
+
+\item \label{ref:pinkbook-ch13} CDC, \emph{Pink Book, Chapter 13:
+Measles}. States that vaccine-induced measles immunity is long-term and
+probably lifelong in most persons, and that natural infection confers
+lifelong immunity.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-13-measles.html}
+
+\item \label{ref:pinkbook-ch15} CDC, \emph{Pink Book, Chapter 15: Mumps}.
+Reports vaccine effectiveness (78\% after one dose, 88\% after two doses)
+but does not state an official duration of protection.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-15-mumps.html}
+
+\item \label{ref:pinkbook-ch16} CDC, \emph{Pink Book, Chapter 16:
+Pertussis}. States explicitly that immunity after \emph{B.\ pertussis}
+infection is not permanent, and discusses waning of acellular vaccine
+immunity over several years.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-16-pertussis.html}
+
+\item \label{ref:pinkbook-ch18} CDC, \emph{Pink Book, Chapter 18:
+Poliomyelitis}. Describes immunity from a complete IPV or OPV series as
+probably lifelong.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-18-poliomyelitis.html}
+
+\item \label{ref:pinkbook-ch20} CDC, \emph{Pink Book, Chapter 20:
+Rubella}. Reports protection for at least 15 years and follow-up
+suggesting one dose confers long-term, probably lifelong, protection.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-20-rubella.html}
+
+\item \label{ref:pinkbook-ch22} CDC, \emph{Pink Book, Chapter 22:
+Varicella}. Describes vaccine-induced immunity as long-lasting and
+probably permanent in the majority of recipients.
+\url{https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-22-varicella.html}
+
+\item \label{ref:pinkbook-index} CDC, \emph{Pink Book, Site Index}. Full
+table of contents for the Pink Book's chapters on individual
+vaccine-preventable diseases.
+\url{https://www.cdc.gov/pinkbook/site.html}
+
+\item \label{ref:cdc-measles-vax} CDC, \emph{Measles Vaccination}.
+States that MMR/MMRV vaccines usually protect against measles and rubella
+for life, while immunity against mumps may decrease over time.
+\url{https://www.cdc.gov/measles/vaccines/index.html}
+
+\item \label{ref:who-brief} WHO, \emph{COVID-19 Natural Immunity:
+Scientific Brief}, 10 May 2021. Reports that most infected persons had
+robust protective immune responses for at least 6--8 months in the
+evidence available at that time, while cautioning against interpreting
+this as a fixed expiration date.
+\url{https://iris.who.int/handle/10665/341241}
+
+\item \label{ref:lewnard-grad} Lewnard JA, Grad YH. Vaccine waning and
+mumps re-emergence in the United States. \emph{Sci Transl Med}.
+2018;10(433):eaao5945. Peer-reviewed academic estimate (not an official
+CDC/WHO figure) that vaccine-derived mumps immunity wanes with a mean
+duration of 27 years (95\% CI, 16--51 years).
+\url{https://doi.org/10.1126/scitranslmed.aao5945}
+
+\item \label{ref:crs-acip} Congressional Research Service, \emph{Changes
+to CDC Vaccine Recommendations in 2025 and 2026}. Summarizes ACIP
+membership changes, the resulting revisions to vaccine recommendations,
+and related litigation over the 2026 childhood immunization schedule.
+\url{https://www.congress.gov/crs-product/IN12684}
+
+\end{enumerate}
+
+\section{Concluding observation}
+
+The principal lesson from the comparison is that the ratio $\theta/\psi$
+(writing $\theta \equiv \lambda_{\rm natural}$ and $\psi \equiv
+\lambda_{\rm vaccine}$, as in Table~\ref{tab:waning}), where it can be
+formed at all, is highly disease-dependent. There is no universal
+biological principle according to which natural immunity must wane more
+slowly than vaccine-induced immunity, nor the converse.
+
+For measles, rubella, varicella, and polio, both natural infection and
+vaccination are officially characterized as producing extremely durable,
+essentially non-waning immunity, and the ratio between them is not
+meaningfully defined. For mumps and hepatitis A, natural infection is
+essentially non-waning while the vaccine wanes on a finite (multi-decade)
+timescale, giving a ratio of exactly zero. For pertussis, both mechanisms
+wane on a finite timescale, with natural immunity lasting somewhat longer
+on average than protection from the current acellular vaccines, though
+neither is permanent. For HPV, natural infection is a poor and inconsistent
+source of durable protection, whereas vaccination produces very durable
+protection -- the opposite pattern from pertussis, and one where the
+natural-immunity side of the ratio is not well-posed at all. For hepatitis
+B, the very idea of a single natural-immunity waning rate breaks down
+because infection outcomes are qualitatively heterogeneous. For influenza
+and COVID-19, waning immunity and antigenic evolution are entangled to the
+point that official sources themselves decline to offer a single duration,
+and this note follows their lead rather than manufacturing false precision.
+
+Consequently, the inverse-duration table is best regarded as a compact
+phenomenological summary useful for modeling in the cases where the
+underlying evidence supports it, and as an explicit record of where it does
+not, rather than as a table of fundamental immunological decay constants.
+
+\end{document}
