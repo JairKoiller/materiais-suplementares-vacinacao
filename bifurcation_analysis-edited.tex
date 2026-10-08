@@ -1,0 +1,607 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{color}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\theoremstyle{remark}
+\newtheorem{remark}[lemma]{Remark}
+
+\newcommand{\R}{\mathcal R_0}
+
+\title{Study of %Backward Bifurcation and Folds for the Quadratic\\
+$A\,I^2+B(r)\,I+C(r)=0$ under $\mathcal R_0(1-\epsilon)<1<\mathcal R_0$}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent We assume  $\R \sigma <1<\R\,,\,\, \sigma = 1-\epsilon$.    For $r \in [\R \sigma, \R]$  we study  the quadratic equation $$A I^2+B(r)I+C(r)=0$$ \\
+ $B(r)$ and $C(r)$  (given below) depend on the control parameter $\phi \in[0,\infty) $
+  through $$\phi(r)=(\mu+\theta)(\R-r)/(r-\R(1-\epsilon)) .$$ % so  $\phi\in[0,\infty)$.
+  \noindent    We prove the following results.
+  
+\begin{enumerate}
+
+\item  The numerator $N(r)$ of the discriminant $B^2-4AC$ is a quadratic polynomial whose real roots, if any, all lie in $(\R\sigma,1]$ ($\sigma=1-\epsilon$); they exist if and only if $B(1)\le K(1-\R\sigma)$, i.e.\ $\beta\ge\beta^*$ for an explicit threshold $\beta^*$ (given below), and $K=(\gamma+\mu)(\mu+\psi)>0$.  Then denote   by  $r_2\in(\R\sigma,1)$ the largest root  of $N$. 
+
+\item  Suppose $B(1)<0$.  This  happens if  $\beta>\beta_0>\beta^*$,  we give below  the expression for $\beta_0$).  Then  the bifurcation at $r=1$ is backward and \emph{always} folds: the two positive branches $I_1(r)>I_2(r)$ exist exactly on $(r_2,1]$ and merge at $r_2\in(\R\sigma,1)$ of $N$.  Hence  they can never stay real, positive and distinct down to $r=\R\sigma$. 
+
+\item Regard $r$ as a function $r=r(I)$ on $[I_a,I_b]$, where $r(I_a)=r(I_b)=\R$  (we give  $I_a<0<I_b$  explicitly).  It  is strictly convex for $\beta\ge\beta^*$;  The minimum of $r(I)$ is  
+$$I_+=\dfrac{-B(1)}{A}\Big/\Big(1+\sqrt{1-B(1)/(KD_1)}\Big)$$ 
+It has  the sign of $-B(1)$, so the bifurcation is backward if and only if the minimum occurs at a positive $I$.
+
+\item In the direct bifurcation case the  branch $I^+(r) > 0,  1 <  r <  \R $ is strictly increasing;   it is strictly concave if $\beta\ge\beta^*$, while for $\beta<\beta^*$ it is either concave or convex-then-concave with a single inflection point, the type being decided by the sign of an explicit quantity $\Theta$ (given below).
+ \end{enumerate}
+\end{abstract}
+
+\newpage
+
+%=====================================================================
+\section{Introduction}
+%=====================================================================
+
+\subsection{The problem}
+
+Let $\mu,\beta,\gamma,\theta,\psi>0$, $0<\epsilon<1$, $\sigma=1-\epsilon$, and  we assume $\R \sigma < 1 <  \R$. Consider
+\begin{equation}
+\phi(r)=(\mu+\theta)\frac{\R-r}{r-\R\sigma}, \, r \in (\R \sigma, \R].
+\end{equation}
+The range $\phi\in[0,\infty)$ corresponds to $r\in(\R\sigma,\R]$.  We denote
+\begin{equation}
+%\boxed{\ 
+%\R\sigma<1<\R\ \qquad(\text{i.e.} 
+   D_1:=1-\R\sigma> 0  % \ \text{and}\ \R>1).
+\label{eq:hyp}
+\end{equation}
+\begin{align*}
+A &= \beta\sigma(\mu+\gamma+\psi),\\
+B &= (\mu+\psi)\big(-\beta\sigma+\theta+\mu\sigma+\mu+\sigma\phi(r)\big)+\gamma\big(\theta+\mu\sigma+\mu+\sigma\phi(r)+\sigma\psi\big),\\
+C &= \frac{(\gamma+\mu)(\mu+\psi)(\theta+\mu+\phi(r))(1-r)}{\beta}%,\qquad
+%\phi(r)=(\mu+\theta)\frac{\R-r}{r-\R\sigma}.
+\end{align*}
+
+\begin{proposition}
+The endemic equilibria $I$ for a given control value $r$ are the roots of
+\begin{equation}
+A\,I^2+B(r)\,I+C(r)=0 .
+\label{eq:quad}
+\end{equation}
+\end{proposition}
+
+\noindent At $r=1$ we have $C=0$ and the roots of \eqref{eq:quad} are $I=0$ and $I=-B(1)/A$, so $r=1$ is a transcritical point. 
+The question  to be studied is the nature of the bifurcation there (direct or backward) and the global shape of the endemic branch.
+
+\subsection{Summary of results}
+
+Write $K=(\gamma+\mu)(\mu+\psi)$. The formal statements are in the sections indicated.
+
+\begin{enumerate}
+\item[\textbf{R1}] \emph{Roots of the discriminant numerator} (Theorem~\ref{thm:Nroots}). The numerator $N(r)$ of $B^2-4AC$ is a quadratic with positive leading coefficient. 
+%All its real roots lie in $(\R\sigma,1]$% (never negative); 
+It  has real roots if and only if
+\[
+B(1)\le K(1-\R\sigma)\iff\beta\ge\beta^*,
+\]
+In this case it  has two roots in $(\R\sigma,1]$ (counted with multiplicity). There is never exactly one simple root in the interval. The condition is stated as an explicit threshold $\beta^*$ in \eqref{eq:betastar}.
+
+\item[\textbf{R2}] \emph{The bifurcation is backward if $B(1)<0$.  Then it is   always folded .}  (Theorem~\ref{thm:fold}).  The condition $B(1)<0$  is equivalent to  $\beta>\beta_0$, where $\beta_0>\beta^*$).   Let  $r_1<r_2$ the roots of $N$: $\R\sigma<r_1<r_2<1$; there are two distinct positive equilibria $I_1(r)>I_2(r)>0$ exactly for $r\in(r_2,1)$; they merge at $r_2$ in a fold, and no positive equilibrium exists for $r<r_2$. In particular it is impossible  the situation where the discriminant stays positive and the two branches reach $r=\R\sigma$.  More precisely,  the  combination ``$\beta<\beta^*$ and $B(1)<0$'' is impossible.
+
+\item[\textbf{R3}] \emph{Study of $r=r(I)\, $  on $[I_a,I_b]$} (Section~\ref{sec:rI}). % Writing the equilibrium as $r=r(I)$ on $[I_a,I_b]$ with
+\[
+I_{a,b}=\frac{-B_0\mp\sqrt{B_0^2+4PK(\R-1)}}{2\beta\sigma(\mu+\gamma+\psi)}\qquad(B_0=B|_{r=\R} \,\,\,  \text{and }  \, P \, \text{given below}). 
+\]
+The function is strictly convex for $\beta\ge\beta^*$ (Theorem~\ref{thm:convex}). Its critical points are the roots of $A^2I^2+2AKD_1I+KD_1B(1)=0$, and the minimizer is
+\[
+I_*=\frac{-B(1)}{A}\cdot\frac{1}{1+\sqrt{1-B(1)/(KD_1)}  }%,\qquad \operatorname{sign}I_+=-\operatorname{sign}B(1).
+\]
+Hence the bifurcation is backward if and only if $B(1)<0$ as mentioned above; this means equivalently  that   the minimum of $r(I)$ occurs at a positive $I$ (Theorem~\ref{thm:shape}); moreover,  if  $\beta<\beta^*$, $r(I)$ has a pole inside $[I_a,I_b]$ and there is no critical point.
+
+\item[\textbf{R4}] \emph{The positive branch in the direct case} (Section~\ref{sec:direct}). For $r\in[1,\R]$ and $B(1)\ge0$ the positive root $I^+(r)$ starts at $0$, ends at $I_b$ and is strictly increasing for every $\beta$. It is strictly concave if $\beta\ge\beta^*$. If $\beta<\beta^*$ it is concave when $\Theta\ge0$, and when $\Theta<0$ it is convex near $r=1$ with at most one inflection point after which it is concave, where
+\[
+\Theta=D_1B(1)^2-pB(1)+pKD_1,\qquad p=\R\epsilon\sigma(\mu+\gamma+\psi)(\mu+\theta).
+\]
+\end{enumerate}
+
+\color{red}
+
+\subsection{Numerical illustration - CHANGE TO OUR REALISTIC PARAMETERS }
+
+Take $\mu=0.05$, $\gamma=\theta=\psi=0.1$, $\R=3$, $\epsilon=0.7$ (so $\sigma=0.3$, $\R\sigma=0.9$, $D_1=0.1$, $KD_1=0.00225$). The thresholds are $\beta^*\approx5.933$ and $\beta_0\approx5.983$.
+
+\paragraph{Backward bifurcation ($\beta=8$).} Then $B(1)\approx-0.0907<0$, the roots of $N$ are $r_1\approx0.9655$, $r_2\approx0.9781$, and $I_1(1)=-B(1)/A\approx0.1512$, $I_2(1)=0$. The positive branches exist on $(r_2,1]$ only (Figure~\ref{fig:roots}). In the $r(I)$ picture (Figure~\ref{fig:rI}), $I_a\approx-0.00266$, $I_+\approx0.02036$, $I_b\approx0.5289$, and $r(I_+)=r_2$ is the minimum.
+
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=0.7\textwidth]{roots_plot.png}
+%\caption{Positive roots $I_1(r)$ (solid) and $I_2(r)$ (dashed) for $\beta=8$; the dotted line marks the fold at $r_2\approx0.978$.}
+%\label{fig:roots}
+%\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{fig_rI.png}
+\caption{The same branch as $r=r(I)$ on $[I_a,I_b]$ for $\beta=8$. The red dot is the minimum at $I_+>0$ (fold); the green dot is the transcritical point $(I,r)=(0,1)$.}
+\label{fig:rI}
+\end{figure}
+
+\paragraph{Direct case.} For $\beta=3$, $1$, $0.3$ we have $B(1)=0.134$, $0.224$, $0.256>KD_1$ (so $\beta<\beta^*$). The branch $I^+(r)$ is increasing in all three cases (Figure~\ref{fig:Iplus}). For $\beta=3$ and $1$ it is convex up to $r\approx1.143$ and $1.128$ respectively and concave afterwards ($\Theta<0$); for $\beta=0.3$ it is concave throughout ($\Theta>0$).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{fig_Iplus.png}
+\caption{Positive branch $I^+(r)$ for $r\in[1,3]$ in the direct case.}
+\label{fig:Iplus}
+\end{figure}
+
+
+
+\color{black}
+
+\newpage
+
+\subsection{Organization}
+
+Section~\ref{sec:prelim} fixes notation and computes the derivatives of $\phi,B,C$. Section~\ref{sec:N} derives the polynomial $N$ and locates its roots (R1). Section~\ref{sec:thresholds} introduces $\beta^*,\beta_0$ and the three parameter regimes. Section~\ref{sec:fold} proves the fold theorem (R2). Section~\ref{sec:rI} studies $r=r(I)$ (R3). Section~\ref{sec:direct} treats the direct case (R4). Section~\ref{sec:numerics} reports the numerical verification, and Section~\ref{sec:concl} collects remarks.
+
+%=====================================================================
+\section{Preliminaries}\label{sec:prelim}
+%=====================================================================
+
+\subsection{Notations}
+
+\begin{align*}
+D &= r-\R\sigma, & D_1 &= 1-\R\sigma, & a &= \mu+\gamma+\psi, & K &= (\gamma+\mu)(\mu+\psi)\\
+P &= \sigma a(\mu+\theta), & Q &= 4PK\epsilon\R, & M &= \frac{K(\mu+\theta)\epsilon\R}{\beta}, & p &= \R\epsilon P\\
+q &= M D_1, & B_0' &= a(\theta+\mu\sigma+\mu)+\gamma\sigma\psi, & B_0 &= B_0'-\beta\sigma(\mu+\psi), & &
+\end{align*}
+$$ u=B_0-P\,,\,\,\, v=P-\sigma B_0 .$$
+
+\subsection{Basic identities}
+
+\paragraph{$B$ is affine in $\phi$.} The coefficient of $\phi$ in $B$ is $(\mu+\psi)\sigma+\gamma\sigma=\sigma a$, so
+\begin{equation}
+B=\sigma a\,\phi+B_0 .
+\label{eq:B}
+\end{equation}
+
+\paragraph{Simplification of $\theta+\mu+\phi$ and $C$.}
+\begin{equation}
+\theta+\mu+\phi=(\mu+\theta)\frac{D+\R-r}{D}=\frac{\epsilon\R(\mu+\theta)}{D},
+\end{equation}
+since $D+\R-r=\R-\R\sigma=\epsilon\R$.  We observe
+\begin{equation}
+%C=M\,\frac{1-r}{D},\qquad
+ DC=M(1-r),\qquad DB=P(\R-r)+B_0D .
+\label{eq:C}
+\end{equation}
+
+\paragraph{Values at $r=1$.} $\phi(1)=(\mu+\theta)(\R-1)/D_1$, so
+\begin{equation}
+L_1:=D_1B(1)=P(\R-1)+B_0D_1 .
+\label{eq:L1}
+\end{equation}
+
+\paragraph{Algebraic relations.} From $A=\beta\sigma a$ and $P=\sigma a(\mu+\theta)$, and from $\R\epsilon=(\R-1)+D_1$,
+\begin{equation}
+AM=pK,\qquad \sigma u+v=\epsilon P,\qquad u+\R v=L_1,\qquad p+uD_1=L_1 .
+\label{eq:rel}
+\end{equation}
+
+\subsection{Derivatives and signs}
+
+\paragraph{$\phi$.}
+\[
+\phi'(r)=(\mu+\theta)\frac{-D-(\R-r)}{D^2}=-\frac{\epsilon\R(\mu+\theta)}{D^2}<0 ,
+\]
+so $\phi$ decreases strictly from $+\infty$ to $0$ on $(\R\sigma,\R]$.
+
+\paragraph{$B$.} By \eqref{eq:B},
+\begin{equation}
+B'(r)=\sigma a\,\phi'(r)=-\frac{\epsilon\sigma\R(\mu+\theta)(\mu+\gamma+\psi)}{D^2}=-\frac{p}{D^2}<0 ,
+\label{eq:dB}
+\end{equation}
+and $B\to+\infty$ as $r\to(\R\sigma)^+$.
+
+\paragraph{$C$.} From \eqref{eq:C}, $\dfrac{d}{dr}\dfrac{1-r}{D}=\dfrac{-D-(1-r)}{D^2}=-\dfrac{D_1}{D^2}$, so
+\begin{equation}
+C'(r)=-\frac{M D_1}{D^2}<0,\qquad C''(r)=\frac{2MD_1}{D^3}>0\quad(D>0).
+\label{eq:dC}
+\end{equation}
+Equivalently:  $$C'=\frac K\beta[\phi'(1-r)-(\theta+\mu+\phi)], $$
+and the bracket equals $$-\epsilon\R(\mu+\theta)[(1-r)+D]/D^2=-\epsilon\R(\mu+\theta)D_1/D^2$$ because $(1-r)+D=D_1$ does not depend on $r$.
+
+\paragraph{Sign of $C$.} By \eqref{eq:C}, $C$ has the sign of $(1-r)/D$:
+\begin{equation}
+C>0\ \text{on }(\R\sigma,1),\qquad C(1)=0,\qquad C<0\ \text{for } r>1\ \text{and for } r<\R\sigma .
+\label{eq:Csign}
+\end{equation}
+(For $r<\R\sigma<1$, $1-r>0$ and $D<0$; for $r>1$, $1-r<0$ and $D>0$.)
+
+%=====================================================================
+\section{The numerator of the discriminant}\label{sec:N}
+%=====================================================================
+
+\subsection{Derivation of $N(r)$}
+
+For $r\neq\R\sigma$ multiply $B^2-4AC$ by $D^2$. By \eqref{eq:C}, $(BD)^2=[P(\R-r)+B_0D]^2$ and $$4AC\,D^2=4\beta\sigma a\,M(1-r)D=Q(1-r)D, $$
+because $4A M=4pK$ and $p=\R\epsilon P$ give $4\beta\sigma a M=Q$. Hence
+\begin{equation}
+N(r):=D^2(B^2-4AC)=\big[P(\R-r)+B_0D\big]^2-Q(1-r)D .
+\label{eq:N}
+\end{equation}
+The bracketed linear part equals $ur+\R v$. Expanding $Q(1-r)D=Q[-r^2+(1+\R\sigma)r-\R\sigma]$,
+\begin{align}
+N(r)&=c_2r^2+c_1r+c_0,\nonumber\\
+c_2&=u^2+Q>0,\quad c_1=2\R uv-Q(1+\R\sigma),\quad c_0=\R^2v^2+Q\R\sigma>0 .
+\label{eq:coef}
+\end{align}
+The product of the roots of $N$ is $c_0/c_2>0$: they  never have opposite signs. Special values:
+\begin{equation}
+N(\R\sigma)=P^2\R^2\epsilon^2>0,\qquad N(1)=L_1^2=D_1^2B(1)^2\ge0,
+\label{eq:Nspecial}
+\end{equation}
+the second because $C(1)=0$.
+
+\subsection{Discriminant of $N$}
+
+\begin{proposition}\label{prop:disc}
+\[
+c_1^2-4c_2c_0=16\,P^2K\,\epsilon^2\R^2\,D_1\big[K D_1-B(1)\big].
+\]
+\end{proposition}
+\begin{proof}
+From \eqref{eq:coef},
+\begin{align*}
+c_1^2-4c_2c_0&=4\R^2u^2v^2-4\R uvQ(1+\R\sigma)+Q^2(1+\R\sigma)^2-4(u^2+Q)(\R^2v^2+Q\R\sigma)\\
+&=Q^2D_1^2-4Q\R\Big[\sigma u^2+(1+\R\sigma)uv+\R v^2\Big]
+=Q^2D_1^2-4Q\R(\sigma u+v)(u+\R v).
+\end{align*}
+By \eqref{eq:rel}, $\sigma u+v=\epsilon P$ and $u+\R v=L_1=D_1B(1)$. With $Q=4PK\epsilon\R$,
+\[
+c_1^2-4c_2c_0=16P^2K^2\epsilon^2\R^2D_1^2-16P^2K\epsilon^2\R^2D_1B(1). \qedhere
+\]
+\end{proof}
+\noindent Conclusion:  Since $D_1>0$, $N$ has two real roots (with multiplicity) iff $B(1)\le KD_1$, and two distinct real roots iff $B(1)<KD_1$.
+
+\subsection{Location of the roots}
+
+\begin{lemma}\label{lem:outside}
+Under \eqref{eq:hyp}, $N(r)>0$ for all $r<\R\sigma$ and all $r>1$, and $N(\R\sigma)>0$.
+\end{lemma}
+\begin{proof}
+For $r\ne\R\sigma$, $N=D^2(B^2-4AC)$. By \eqref{eq:Csign}, $C<0$ for $r<\R\sigma$ and for $r>1$, so $-4AC>0$ and $B^2-4AC>0$. The value at $\R\sigma$ is \eqref{eq:Nspecial}.
+\end{proof}
+
+\begin{theorem}[Roots of $N$]\label{thm:Nroots}
+Under \eqref{eq:hyp}, every real root of $N$ lies in $(\R\sigma,1]$; in particular no root is negative. $N$ has real roots if and only if $B(1)\le KD_1$. If $B(1)<KD_1$ it has exactly two distinct real roots $r_1<r_2$ in $(\R\sigma,1]$, with $r_2<1$ if $B(1)\ne0$. If $B(1)=KD_1$ it has one double root in $(\R\sigma,1]$. A single simple root in $(\R\sigma,1)$ never occurs.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:outside} excludes roots outside $(\R\sigma,1]$. Proposition~\ref{prop:disc} gives the criterion for real roots. For $B(1)\ne0$, $N(1)=L_1^2>0$ so $r_2<1$. If $B(1)=0$ then $r=1$ is a root and the other root, being in $(\R\sigma,1]$ too, is $<1$ (it is $c_0/c_2$ since the roots multiply to $c_0/c_2$, and $N>0$ on $(1,\infty)$). The count is even because $N$ is a convex quadratic positive at both ends of $[\R\sigma,1]$ up to the endpoint case just discussed.
+\end{proof}
+
+%=====================================================================
+\section{Thresholds and the three regimes}\label{sec:thresholds}
+%=====================================================================
+
+$B(1)=\sigma a\phi(1)+B_0$ is affine and strictly decreasing in $\beta$, since $B_0=B_0'-\beta\sigma(\mu+\psi)$. Define
+\begin{align}
+\beta^*&=\frac{P(\R-1)+(B_0'-KD_1)D_1}{\sigma(\mu+\psi)D_1}\qquad(\text{where }B(1)=KD_1),\label{eq:betastar}\\
+\beta_0&=\frac{P(\R-1)/D_1+B_0'}{\sigma(\mu+\psi)}\qquad(\text{where }B(1)=0),\label{eq:beta0}
+\end{align}
+so that
+\[
+\beta_0=\beta^*+\frac{KD_1}{\sigma(\mu+\psi)}>\beta^* .
+\]
+Then $B(1)\le KD_1\iff\beta\ge\beta^*$ and $B(1)\le0\iff\beta\ge\beta_0$. (If $\beta^*\le0$ the first condition holds for every $\beta>0$, and similarly for $\beta_0$.) The three regimes are:
+
+\begin{itemize}
+\item \textbf{$\beta<\beta^*$.} $N>0$ everywhere, and $B(1)>KD_1>0$, so $B>0$ on $(\R\sigma,1]$ (as $B$ is decreasing): both roots in $I$ are negative for $r<1$. The bifurcation is direct and there is no fold.
+\item \textbf{$\beta^*\le\beta\le\beta_0$} ($0\le B(1)\le KD_1$). $N$ has real roots in $(\R\sigma,1]$, but $B\ge0$ on $(\R\sigma,1)$, so roots in $I$ are not positive there. The bifurcation is direct; a ``hidden'' fold sits at $I\le0$ (Section~\ref{sec:rI}).
+\item \textbf{$\beta>\beta_0$} ($B(1)<0$). The bifurcation is backward with a visible fold at $r_2\in(\R\sigma,1)$ (Section~\ref{sec:fold}).
+\end{itemize}
+In particular the combination ``$\beta<\beta^*$ and $B(1)<0$'' is impossible, since $B(1)<0<KD_1$ forces $\beta>\beta_0>\beta^*$. The threshold $\beta^*$ governs only whether $N$ has real roots; the backward bifurcation itself is governed by $\beta_0$, because positive roots in $I$ require $B<0$.
+
+%=====================================================================
+\section{The fold theorem}\label{sec:fold}
+%=====================================================================
+
+The roots of \eqref{eq:quad} are $I_{1,2}=\dfrac{-B\pm\sqrt{B^2-4AC}}{2A}$, with sum $-B/A$ and product $C/A$.
+
+\begin{lemma}\label{lem:sign}
+Let $r\in(\R\sigma,1)$, so $A>0$ and $C>0$. The quadratic has two positive roots (counted with multiplicity) iff $B(r)<0$ and $B^2-4AC\ge0$. If $B(r)\ge0$ both roots are negative or complex. At $r=1$ the roots are $0$ and $-B(1)/A$.
+\end{lemma}
+\begin{proof}
+The product $C/A>0$ forces equal signs (or complex conjugates); the common sign is that of the sum $-B/A$. At $r=1$, $C=0$ and the equation factors as $I(AI+B(1))=0$.
+\end{proof}
+
+\begin{theorem}[Fold]\label{thm:fold}
+Assume \eqref{eq:hyp} and $B(1)<0$ (i.e.\ $\beta>\beta_0$). Let $r_1<r_2$ be the roots of $N$. Then $\R\sigma<r_1<r_2<1$, and:
+\begin{enumerate}
+\item[(a)] $B$ has exactly one zero $r_B\in(\R\sigma,1)$, and $r_1<r_B<r_2$.
+\item[(b)] For $r\in(r_2,1)$ the quadratic has two distinct positive roots $I_1(r)>I_2(r)>0$, continuous in $r$. At $r=1$: $I_2(1)=0$, $I_1(1)=-B(1)/A>0$.
+\item[(c)] At $r=r_2$ the roots coincide: $I_1(r_2)=I_2(r_2)=-B(r_2)/(2A)>0$. This is a fold (saddle-node), with $I_1-I_2\sim c\sqrt{r-r_2}$, $c>0$, as $r\to r_2^+$.
+\item[(d)] For $r\in(\R\sigma,r_2)$ there is no positive root: on $(r_1,r_2)$ the roots are complex, and on $(\R\sigma,r_1]$ (where $B>0$) they are real and negative.
+\end{enumerate}
+Consequently the branches always merge in a fold at the larger root $r_2\in(\R\sigma,1)$ of $N$; they can never remain real, positive and distinct down to $r=\R\sigma$.
+\end{theorem}
+\begin{proof}
+Since $B(1)<0<KD_1$, Proposition~\ref{prop:disc} gives two distinct real roots of $N$, and Theorem~\ref{thm:Nroots} places them in $(\R\sigma,1)$ ($r_2<1$ as $B(1)\ne0$).
+
+(a) $B$ is strictly decreasing, tends to $+\infty$ at $\R\sigma^+$ and $B(1)<0$, so it has exactly one zero $r_B\in(\R\sigma,1)$. At $r_B$, $B^2-4AC=-4AC<0$ by \eqref{eq:Csign}, so $N(r_B)<0$. As $N>0$ outside $[r_1,r_2]$, $r_B\in(r_1,r_2)$.
+
+(b) For $r\in(r_2,1)$: $r>r_B$ gives $B<0$, and $N>0$ gives $B^2-4AC>0$. Lemma~\ref{lem:sign} gives two distinct positive roots, continuous because $B^2-4AC>0$. The values at $r=1$ follow from the lemma.
+
+(c) $N(r_2)=0$ gives $B^2=4AC$ at $r_2$, and $B(r_2)<0$ since $r_2>r_B$, so both roots equal $-B(r_2)/(2A)>0$. The roots of $N$ are simple (positive discriminant), so $B^2-4AC=N/D^2$ has a simple zero at $r_2$ with positive slope, and $I_1-I_2=\sqrt{B^2-4AC}/A\sim c\sqrt{r-r_2}$.
+
+(d) On $(r_1,r_2)$, $N<0$ gives complex roots. On $(\R\sigma,r_1]$, $r\le r_1<r_B$ gives $B>0$, so by Lemma~\ref{lem:sign} the roots are not positive; the discriminant is $\ge0$ there, so they are real and negative.
+\end{proof}
+
+\begin{remark}
+The alternative that the discriminant of $N$ stays positive and two distinct positive branches reach $\R\sigma$ is excluded for two reasons: positive roots need $B<0$ whereas $B\to+\infty$ at $\R\sigma^+$; and at the zero $r_B$ of $B$ the roots satisfy $I^2=-C/A<0$.
+\end{remark}
+
+%=====================================================================
+\section{The branch as a function $r=r(I)$}\label{sec:rI}
+%=====================================================================
+
+\subsection{Explicit form}
+
+Multiply \eqref{eq:quad} by $D$ and use \eqref{eq:C}:
+\[
+AI^2D+I\big[P(\R-r)+B_0D\big]+M(1-r)=0 ,
+\]
+which is \emph{linear} in $r$. Collecting terms,
+\[
+r\,\big(AI^2+uI-M\big)=\R\sigma A I^2-\R vI-M .
+\]
+Using $\sigma u+v=\epsilon P$, polynomial division gives
+\begin{equation}
+r(I)=\R\sigma+\frac{p\,I+q}{\Delta(I)},\qquad \Delta(I):=M-uI-AI^2 .
+\label{eq:rI}
+\end{equation}
+In particular $r(0)=\R\sigma+q/M=1$. The function has poles at the two zeros of $\Delta$ (one negative, one positive, since $\Delta(0)=M>0$ and $A>0$), where $r\to\pm\infty$, outside the physical range $\R\sigma<r\le\R$. Because $r-\R\sigma=(pI+q)/\Delta$, with $p,q>0$, the physical range corresponds to $pI+q>0$ and $\Delta>0$ on a pole-free piece.
+
+\subsection{The endpoints $I_a<0<I_b$}
+
+$r=\R$ means $\phi=0$, where $B=B_0$ and $C=-K(\mu+\theta)(\R-1)/\beta$. Hence $r(I)=\R$ exactly at the roots of $AI^2+B_0I-m=0$, $m:=K(\mu+\theta)(\R-1)/\beta=PK(\R-1)/A$:
+\begin{equation}
+I_{a,b}=\frac{-B_0\mp\sqrt{B_0^2+4PK(\R-1)}}{2\beta\sigma(\mu+\gamma+\psi)},
+\label{eq:Iab}
+\end{equation}
+with $B_0=(\mu+\gamma+\psi)(\theta+\mu\sigma+\mu)+\gamma\sigma\psi-\beta\sigma(\mu+\psi)$. The product of the roots is $-m/A<0$, so $I_a<0<I_b$.
+
+\subsection{Absence of poles on $[I_a,I_b]$}
+
+\begin{lemma}\label{lem:nopole}
+Let $I_c:=-KD_1/A<0$.
+\begin{enumerate}
+\item[(i)] $\Delta(I_b)>0$ and $\Delta(I_a)=P(I_a-I_c)$.
+\item[(ii)] If $B(1)<KD_1$ (i.e.\ $\beta>\beta^*$), then $I_c<I_a$, $\Delta>0$ and $pI+q>0$ on all of $[I_a,I_b]$, so $r(I)$ is smooth there and $\R\sigma<r(I)\le\R$.
+\item[(iii)] If $B(1)>KD_1$ (i.e.\ $\beta<\beta^*$), then $I_a<I_c<0$, so $\Delta$ vanishes somewhere in $(I_a,0)$: $[I_a,I_b]$ contains a pole.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+At $I=I_a,I_b$ we have $AI^2+B_0I=m$, so
+\[
+\Delta(I)=M-(B_0-P)I-AI^2=M-m+PI=P\Big(I+\frac{KD_1}{A}\Big),
+\]
+because $M-m=K(\mu+\theta)(\epsilon\R-\R+1)/\beta=K(\mu+\theta)D_1/\beta=PKD_1/A$. This gives (i).
+
+Let $G(I)=AI^2+B_0I-m$, a convex quadratic with roots $I_a<0<I_b$. Using $Am=PK(\R-1)$ and \eqref{eq:L1},
+\[
+G(I_c)=\frac KA\Big[KD_1^2-B_0D_1-P(\R-1)\Big]=\frac{KD_1}{A}\big(KD_1-B(1)\big).
+\]
+As $I_c<0$: $I_c<I_a$ iff $G(I_c)>0$ iff $B(1)<KD_1$; and $I_a<I_c<0$ iff $B(1)>KD_1$. In case (ii), $\Delta(I_a)>0$, and a concave quadratic positive at both endpoints is positive in between. Finally $r(I_a)=\R>\R\sigma$ with $\Delta(I_a)>0$ gives $pI_a+q>0$, and $pI+q$ is increasing.
+\end{proof}
+
+\subsection{Critical point  of $r(I)$ (the fold)}
+
+\begin{proposition}\label{prop:crit}
+Assume $B(1)\le KD_1$. The critical points of $r(I)$ are the roots of
+\begin{equation}
+A^2I^2+2AKD_1\,I+KD_1B(1)=0,
+\label{eq:crit}
+\end{equation}
+namely
+\begin{equation}
+I_\pm=\frac{-KD_1\pm\sqrt{KD_1\big(KD_1-B(1)\big)}}{A},
+\label{eq:Ipm}
+\end{equation}
+and the fold occurs at
+\begin{equation}
+%\boxed{\,
+I_+=\frac{-B(1)}{A}\cdot\frac{1}{1+\sqrt{1-\dfrac{B(1)}{KD_1}}} %\,}
+\label{eq:Iplus}
+\end{equation}
+Hence $\operatorname{sign}I_+=-\operatorname{sign}B(1)$, with $I_+=0$ iff $B(1)=0$, and for $B(1)<0$, $0<I_+<-B(1)/(2A)$. If $B(1)<KD_1$ then $I_-<I_c<I_a$, so $I_-\notin[I_a,I_b]$.
+\end{proposition}
+\begin{proof}
+With $n=pI+q$, $dr/dI=0$ iff $p\Delta-n\Delta'=0$, i.e.\ $pAI^2+2qAI+pM+qu=0$. Multiply by $A/p$ and use \eqref{eq:rel}: $qA/p=KD_1$, $AM=pK$, and $K(p+uD_1)=KL_1=KD_1B(1)$. This gives \eqref{eq:crit}, whose roots are \eqref{eq:Ipm}. Writing $\sqrt x-1=(x-1)/(\sqrt x+1)$ with $x=1-B(1)/(KD_1)$ gives \eqref{eq:Iplus}. Finally $I_-=I_c-\sqrt{KD_1(KD_1-B(1))}/A<I_c<I_a$ by Lemma~\ref{lem:nopole}(ii).
+\end{proof}
+
+\begin{remark}[Critical points are folds]\label{rem:critfold}
+Let $F(r,I)=AI^2+B(r)I+C(r)$ and $\Phi=DF$, which is linear in $r$ with $\Phi_r=-\Delta$. On $\Phi=0$, $dr/dI=\Phi_I/\Delta$, and $\Phi_I=DF_I$ (as $F=0$). Hence, where $\Delta\ne0$, $dr/dI=0$ iff $F_I=2AI+B=0$, i.e.\ iff the quadratic has a double root in $I$. At a point of the curve with $I>0$ we have $\Delta\neq0$: indeed $F=0$ gives $(r-\R\sigma)\Delta=pI+q>0$. So the critical points with $I>0$ are exactly the folds.
+\end{remark}
+
+\subsection{Convexity}
+
+\begin{theorem}[Convexity of $r(I)$]\label{thm:convex}
+If $B(1)<KD_1$ (equivalently $\beta>\beta^*$) then $r''(I)>0$ on $[I_a,I_b]$. If $B(1)=KD_1$, the same holds on $(I_a,I_b]$.
+\end{theorem}
+\begin{proof}
+Let $n=pI+q$ and $h=\Delta/n=1/(r-\R\sigma)$. By Lemma~\ref{lem:nopole}, $n>0$ and $\Delta>0$ on $[I_a,I_b]$, so $h>0$ there. Polynomial division gives
+\[
+h=-\frac Ap\,I+e+\frac{f}{pI+q},\qquad e=\frac{Aq-up}{p^2},\quad f=M-qe=\frac{Mp^2-Aq^2+upq}{p^2}.
+\]
+Substituting $q=MD_1$ and using \eqref{eq:rel} ($AM=pK$, $p+uD_1=L_1$),
+\[
+Mp^2-Aq^2+upq=Mp\big(p-KD_1^2+uD_1\big)=Mp\big(L_1-KD_1^2\big)=MpD_1\big(B(1)-KD_1\big),
+\]
+so
+\begin{equation}
+f=\frac{M D_1}{p}\,\big(B(1)-KD_1\big),\qquad h''=\frac{2fp^2}{(pI+q)^3}.
+\label{eq:f}
+\end{equation}
+Since $r-\R\sigma=1/h$,
+\[
+r''=\frac{2h'^2-h\,h''}{h^3}.
+\]
+If $B(1)<KD_1$ then $f<0$, so $h''<0$ and the numerator is $>0$. If $B(1)=KD_1$ then $f=0$, $h'=-A/p\ne0$, and the numerator is $2h'^2>0$.
+\end{proof}
+
+\subsection{Shape of the branch and type of bifurcation}
+
+\begin{theorem}[Shape and bifurcation type]\label{thm:shape}
+Let $B(1)<KD_1$. Then $r(I)$ is strictly convex on $[I_a,I_b]$ with $r(I_a)=r(I_b)=\R$ and a unique minimizer $I_+$ (Proposition~\ref{prop:crit}). Moreover:
+\begin{enumerate}
+\item[(a)] If $B(1)<0$ then $I_+>0$ and $r_{\min}=r(I_+)=r_2$, the larger root of $N$. The bifurcation at $r=1$ is backward: $r(0)=1$ and $r(I_+)=r_2<1$.
+\item[(b)] If $0<B(1)<KD_1$ then $I_+<0$, the branch is increasing on $I\ge0$, and the bifurcation is direct; the fold is hidden at a negative $I$. For $B(1)=0$ the minimum is at $I=0$ with $r_{\min}=1$ (degenerate transcritical point).
+\item[(c)] For every $r\in(r_{\min},\R)$ the equation $r(I)=r$ has exactly two solutions in $[I_a,I_b]$.
+\end{enumerate}
+In all cases $r(I_+)$ is a root of $N$ (a double root of the quadratic in $I$ forces $B^2=4AC$).
+\end{theorem}
+\begin{proof}
+Strict convexity, the boundary values and Proposition~\ref{prop:crit} (the other critical point $I_-$ lies outside) give a unique minimizer $I_+$ in $(I_a,I_b)$, and the sign statements follow from \eqref{eq:Iplus}. Item (c) follows from strict convexity.
+
+(a) Let $(r_2,I_{\rm f})$ be the fold of Theorem~\ref{thm:fold}, with $I_{\rm f}=-B(r_2)/(2A)>0$. It is a point of the curve with $F_I=0$ and $I_{\rm f}>0$, hence a critical point of $r(I)$ by Remark~\ref{rem:critfold}. The only critical points are $I_\pm$ with $I_-<0$, so $I_{\rm f}=I_+$ and $r(I_+)=r_2$. Then $r$ decreases from $r(0)=1$ as $I$ leaves $0$.
+
+(b) $I_+\le0$ implies $r$ is increasing on $[0,I_b]$.
+\end{proof}
+
+\begin{remark}[The case $\beta<\beta^*$]
+If $B(1)>KD_1$, $r(I)$ has a pole inside $[I_a,I_b]$ (Lemma~\ref{lem:nopole}(iii)), there is no critical point, and $r$ is monotone on the physical piece. Convexity is not guaranteed there (Section~\ref{sec:direct}).
+\end{remark}
+
+%=====================================================================
+\section{The positive branch for $r\in[1,\R]$ in the direct case}\label{sec:direct}
+%=====================================================================
+
+Throughout this section $B(1)\ge0$, i.e.\ $\beta\le\beta_0$, so that the positive branch emanates from $I=0$.
+
+\subsection{Existence and monotonicity}
+
+For $r\in(1,\R]$ we have $C<0$ by \eqref{eq:Csign}, so the quadratic has exactly one positive root
+\[
+I^+(r)=\frac{-B(r)+\sqrt{B(r)^2-4AC(r)}}{2A}.
+\]
+Since $B(1)\ge0$ and $C(1)=0$, $I^+(1)=0$; also $I^+(\R)=I_b$.
+
+\begin{proposition}[Monotonicity]\label{prop:mono}
+$I^+$ is continuous on $[1,\R]$ and strictly increasing. For $B(1)>0$,
+\begin{equation}
+{I^+}'(1)=\frac{-C'(1)}{B(1)}=\frac{M}{D_1B(1)}>0 ,
+\label{eq:slope1}
+\end{equation}
+while for $B(1)=0$ the tangent at $r=1$ is vertical. (On $(1,\R]$ the statement holds for every $\beta>0$.)
+\end{proposition}
+\begin{proof}
+On the curve $F(r,I^+(r))=0$ we have $dI^+/dr=-F_r/F_I$. Here $F_r=B'(r)I+C'(r)<0$ for $I>0$, by \eqref{eq:dB} and \eqref{eq:dC}, and $F_I=2AI^++B=\sqrt{B^2-4AC}>0$ at the larger root. So $dI^+/dr>0$. At $r=1$, $C'(1)=-M/D_1$ and $F_I=B(1)$, which gives \eqref{eq:slope1}; if $B(1)=0$ then $F_I=0$ at $(1,0)$ and the slope is infinite.
+\end{proof}
+
+Consequently the inverse function $r(I)$ of \eqref{eq:rI}, restricted to $[0,I_b]$, is strictly increasing with $r(0)=1$, $r(I_b)=\R$, and
+\begin{equation}
+{I^+}''(r)=-\frac{r''(I)}{r'(I)^3},\qquad r'(I)>0 ,
+\label{eq:inv}
+\end{equation}
+so $I^+$ is concave iff $r(I)$ is convex on $[0,I_b]$.
+
+\subsection{Concavity for $\beta\ge\beta^*$}
+
+\begin{theorem}[Concavity]\label{thm:concave1}
+If $0<B(1)\le KD_1$ (i.e.\ $\beta^*\le\beta<\beta_0$), then $I^+$ is strictly concave on $[1,\R]$. The same holds for $B(1)=0$ ($\beta=\beta_0$), where $I^+(r)\sim c\sqrt{r-1}$ near $r=1$.
+\end{theorem}
+\begin{proof}
+By Theorem~\ref{thm:convex}, $r''(I)>0$ on $(I_a,I_b]\supset[0,I_b]$; apply \eqref{eq:inv}. For $B(1)=0$ we have $I_+=0$ and $r'(0)=0$, $r''(0)>0$, which gives the square-root behavior.
+\end{proof}
+
+\subsection{The case $\beta<\beta^*$: concave, or convex then concave}
+
+Assume $B(1)>KD_1$. By Lemma~\ref{lem:nopole}, a pole may lie in $[I_a,0)$, but on $[0,I_b]$ we have $\Delta>0$ (it is concave with $\Delta(0)=M>0$ and $\Delta(I_b)>0$) and $n=pI+q>0$, so $r(I)$ is smooth on $[0,I_b]$.
+
+\paragraph{Sign of $r''$.} Let $t=pI+q>0$ and $h=\Delta/n=1/(r-\R\sigma)>0$. From the proof of Theorem~\ref{thm:convex}, with $I=(t-q)/p$,
+\[
+h=-\alpha t+c_0+\frac ft,\qquad \alpha=\frac A{p^2},\quad c_0=\frac{2Aq-up}{p^2},\quad f=\frac{MD_1}{p}\big(B(1)-KD_1\big)>0 .
+\]
+Then $h'=-p(\alpha+f/t^2)$, $h''=2p^2f/t^3$ and
+\[
+2h'^2-h\,h''=2p^2\Big[\alpha^2+\frac{3\alpha f}{t^2}-\frac{c_0f}{t^3}\Big]=\frac{2p^2}{t^3}\,\psi(t),\qquad
+\psi(t):=\alpha^2t^3+3\alpha f\,t-c_0f .
+\]
+Since $r''=(2h'^2-hh'')/h^3$ and $h,t>0$,
+\begin{equation}
+\operatorname{sign}r''(I)=\operatorname{sign}\psi(pI+q).
+\label{eq:psi}
+\end{equation}
+Because $\alpha,f>0$, $\psi'(t)=3\alpha^2t^2+3\alpha f>0$: $\psi$ is strictly increasing. Hence $r''$ changes sign at most once on $[0,I_b]$, and only from negative to positive as $I$ increases.
+
+\paragraph{The criterion at $r=1$.} Differentiate $F(r,I^+(r))=0$ twice at $(r,I)=(1,0)$:
+\[
+F_{rr}+2F_{rI}\,{I^+}'+F_{II}\,({I^+}')^2+F_I\,{I^+}''=0 ,
+\]
+with $F_{rr}=C''(1)=2M/D_1^2$ (the term $B''I$ vanishes at $I=0$), $F_{rI}=B'(1)=-p/D_1^2$, $F_{II}=2A$, $F_I=B(1)$. Put $J={I^+}'(1)=M/(D_1B(1))$. Using $AM=pK$,
+\[
+C''+2B'J+2AJ^2=\frac2{D_1^2}\Big[M-pJ+AD_1^2J^2\Big]=\frac{2M}{D_1^3B(1)^2}\,\Theta ,
+\]
+and therefore
+\begin{equation}
+{I^+}''(1)=-\frac{2M\,\Theta}{D_1^{3}B(1)^{3}},\qquad
+\Theta:=D_1B(1)^2-p\,B(1)+pKD_1 .
+\label{eq:I2at1}
+\end{equation}
+By \eqref{eq:inv}, $\operatorname{sign}r''(0)=\operatorname{sign}\Theta$, and since $h(0)=M/q>0$, \eqref{eq:psi} gives $\operatorname{sign}\psi(q)=\operatorname{sign}\Theta$.
+
+\begin{theorem}[Concavity versus one inflection]\label{thm:dichotomy}
+Let $B(1)>KD_1$ (i.e.\ $0<\beta<\beta^*$).
+\begin{enumerate}
+\item[(i)] If $\Theta\ge0$, then $I^+$ is strictly concave on $(1,\R]$.
+\item[(ii)] If $\Theta<0$, then $I^+$ is strictly convex near $r=1$. It has at most one inflection point $r_*\in(1,\R)$: $I^+$ is convex on $[1,r_*]$ and concave on $[r_*,\R]$; if no inflection occurs in $(1,\R)$, $I^+$ is convex on all of $[1,\R]$.
+\end{enumerate}
+In particular $\Theta<0$ is possible only if $p>4KD_1^2$ and $B(1)$ lies strictly between the roots
+\[
+B_\pm=\frac{p\pm\sqrt{p^2-4pKD_1^2}}{2D_1},\qquad\text{with }B_->KD_1 .
+\]
+\end{theorem}
+\begin{proof}
+(i) If $\Theta\ge0$ then $\psi(q)\ge0$, and $\psi$ is strictly increasing, so $\psi>0$ for $t>q$, i.e.\ $r''>0$ on $(0,I_b]$; apply \eqref{eq:inv}. (ii) If $\Theta<0$ then $\psi(q)<0$, so $r''<0$ near $I=0$ and $I^+$ is convex there. By monotonicity of $\psi$ there is at most one zero $t_0=pI_0+q$; if $I_0\in(0,I_b)$ then $r''<0$ on $[0,I_0)$ and $r''>0$ on $(I_0,I_b]$, which gives the stated pattern with $r_*=r(I_0)$.
+
+For the last claim, $\Theta$ is a quadratic in $B(1)$ with $\Theta(0)=pKD_1>0$ and $\Theta(KD_1)=K^2D_1^3>0$. $\Theta<0$ somewhere requires real roots $B_\pm$, i.e.\ $p>4KD_1^2$, and then $\Theta<0$ exactly on $(B_-,B_+)$. Since $KD_1$ lies outside this interval, either $KD_1\ge B_+$ or $KD_1\le B_-$; the first is impossible because $B_+\ge p/(2D_1)>2KD_1$. Hence $KD_1<B_-$ (and the case $\Theta<0$ with $B(1)\le KD_1$ never occurs, in agreement with Theorem~\ref{thm:concave1}).
+\end{proof}
+
+%=====================================================================
+\section{Numerical verification}\label{sec:numerics}
+%=====================================================================
+
+All statements above are proved analytically; random-parameter experiments (positive parameters, $0<\epsilon<1$, $\R\sigma<1<\R$) were used to check them and to catch algebraic errors.
+
+\begin{center}
+\begin{tabular}{p{5.2cm}p{2.0cm}p{6.2cm}}
+\toprule
+Test & Samples & Outcome\\
+\midrule
+Roots of $N$; parameters in $(0.01,3)$ & 200{,}000 & 981 with real roots, all in $(\R\sigma,1)$; none negative or of mixed sign\\
+Roots of $N$; log-uniform in $(10^{-3},10^2)$ & 2{,}000{,}000 & 284{,}909 with real roots; 4 apparent exceptions at $r\approx1$, attributed to floating-point error at $B(1)\approx0$\\
+Convexity of $r(I)$ on $[I_a,I_b]$ & 200{,}000 & all 26{,}245 cases with $B(1)<KD_1$ convex with no pole; all 173{,}755 cases with $B(1)>KD_1$ had a pole in $[I_a,I_b]$\\
+Positive branch, $B(1)\ge0$ & 53{,}634 & $I^+$ always increasing; always concave when $B(1)\le KD_1$; $\Theta<0$ in 3{,}705 cases ($\approx7\%$)\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the last test, 23 samples disagreed with the sign of $\Theta$; the six examined had $B(1)/(KD_1)>2000$ and second differences at round-off level, so these are attributed to finite-difference noise (the rest were not inspected). Formula \eqref{eq:I2at1} was checked against finite differences for $\beta=3$ (predicted $2.570$, finite difference $2.575$) and $\beta=0.3$ (both $-1.5588$), and \eqref{eq:Iplus} against the direct computation of the critical point for $\beta=8$ and $\beta=5.95$ ($I_+=0.02036$ and $-0.00213$ respectively).
+
+%=====================================================================
+\section{Concluding remarks}\label{sec:concl}
+%=====================================================================
+
+\begin{enumerate}
+\item The threshold $\beta^*$ tells when $N$ has real roots; the backward bifurcation itself is governed by $\beta_0$ (the sign of $B(1)$). For $\beta^*\le\beta\le\beta_0$ the fold exists but sits at $I\le0$ and is not physical.
+\item Under $\R\sigma<1<\R$ the backward bifurcation is \emph{always} folded: the positive branches exist exactly on $(r_2,1]$, and a unique crossing or a persistent pair down to $r=\R\sigma$ never occurs.
+\item The value $I_+$ of the minimizer of $r(I)$ equals $-B(1)/A$ times a factor in $(0,\tfrac12)$ when $B(1)<0$, so it is not simply proportional to $B(1)$, but its sign is $-\operatorname{sign}B(1)$ exactly.
+\item The positive branch of the direct case is always increasing; its concavity is guaranteed for $\beta\ge\beta^*$, while for $\beta<\beta^*$ at most one inflection point can occur and the sign of $\Theta$ decides whether the branch starts convex.
+\end{enumerate}
+
+\end{document}
