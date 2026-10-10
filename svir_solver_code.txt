@@ -1,0 +1,155 @@
+SVIR MODEL WITH VACCINATION - ODE SOLVER AND SIMULATION CODE
+=============================================================
+
+SOFTWARE USED
+  Python      3.12.3
+  NumPy       2.4.4
+  SciPy       1.17.1   (scipy.integrate.solve_ivp, method 'LSODA')
+  Matplotlib  3.10.8   (figures, saved as .png at 160 dpi)
+
+SOLVER SETTINGS
+  Simulations (t = 0 ... 3000, 6001 output points): LSODA, rtol = 1e-10, atol = 1e-13
+  Basin classification (up to t = 80000, event-terminated): LSODA, rtol = 1e-9, atol = 1e-14
+  The invariant S+V+I+R = 1 was checked at the end of each run (error ~1e-15).
+
+The code below is a consolidated version of the scripts used. Running it
+reproduces the numbers reported (e.g. final state of run (i) at phi = 0.0085:
+S = 0.18891, V = 0.48401, I = 0.023673, R = 0.30340; and the separatrix values
+I_c(0.65) = 2.03e-7, I_c(0.80) = 9.00e-5, I_c(0.90) = 3.80e-3, I_c(0.95) = 1.83e-2).
+
+-------------------------------------------------------------------------------
+PART 1: MODEL, SOLVER, SIMULATIONS AND BASIN COMPUTATION  (Python)
+-------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------
+# SVIR model with vaccination: numerical solver, simulations and basin
+# of attraction computation.
+#
+# Software: Python 3.12.3, NumPy 2.4.4, SciPy 1.17.1, Matplotlib 3.10.8
+# ODE integrator: scipy.integrate.solve_ivp, method='LSODA'
+#   (automatic stiff/non-stiff switching, ODEPACK Fortran code).
+#
+# Model (population normalized to 1, N = S+V+I+R = 1):
+#   dS/dt = mu*N - beta*S*I - mu*S - phi*S + theta*V + psi*R
+#   dV/dt = phi*S - (mu+theta)*V - sigma*beta*V*I
+#   dI/dt = beta*S*I + sigma*beta*V*I - gamma*I - mu*I
+#   dR/dt = gamma*I - (mu+psi)*R
+# ---------------------------------------------------------------------
+import numpy as np
+from scipy.integrate import solve_ivp
+
+# ----- parameters ----------------------------------------------------
+mu    = 360e-7
+gamma = 1/7
+psi   = 1/90
+theta = 1/1095
+eps   = 0.8
+sigma = 1 - eps            # 0.2
+R0    = 3.5
+beta  = R0*(mu + gamma)    # ~0.500126
+phi   = 0.0085             # vaccination rate (main runs)
+                           # (preliminary runs: r = 0.98, i.e.
+                           #  phi = (mu+theta)*(R0-r)/(r-R0*sigma) = 0.008543)
+
+def rhs(t, y, phi=phi):
+    S, V, I, R = y
+    return [mu - beta*S*I - mu*S - phi*S + theta*V + psi*R,
+            phi*S - (mu + theta)*V - sigma*beta*V*I,
+            beta*S*I + sigma*beta*V*I - gamma*I - mu*I,
+            gamma*I - (mu + psi)*R]
+
+def run(y0, tmax=3000.0, npts=6001, phi=phi):
+    """Integrate from t=0 to tmax; returns the solution on a uniform grid."""
+    T = np.linspace(0.0, tmax, npts)
+    return solve_ivp(rhs, (0.0, tmax), y0, args=(phi,), method='LSODA',
+                     rtol=1e-10, atol=1e-13, t_eval=T)
+
+# ----- derived quantities --------------------------------------------
+# disease-free equilibrium and controlled reproduction number
+S_dfe = (mu + theta)/(mu + theta + phi)
+V_dfe = phi/(mu + theta + phi)
+r = R0*((mu + theta) + sigma*phi)/(mu + theta + phi)   # ~0.9813 for phi=0.0085
+
+# ----- simulations (t = 0 ... 3000) ----------------------------------
+if __name__ == "__main__":
+    print("beta =", beta, " phi =", phi, " r =", r, " S*,V* =", S_dfe, V_dfe)
+
+    # (i) and (ii): no vaccinated individuals initially
+    ic1 = [0.99, 0.0, 0.01, 0.0]            # [S0, V0, I0, R0]
+    ic2 = [0.90, 0.0, 0.10, 0.0]
+    # disease-free alternative: start at the vaccinated DFE, I0 = 0.001
+    I0 = 0.001
+    ic_dfe = [S_dfe*(1 - I0), V_dfe*(1 - I0), I0, 0.0]
+    # highly vaccinated start: V0 = 0.9, I0 = 0.01, R0 = 0, S0 = 1-(V0+I0)
+    ic_V09 = [1 - (0.9 + 0.01), 0.9, 0.01, 0.0]
+
+    for name, y0 in (("ic1", ic1), ("ic2", ic2), ("dfe", ic_dfe), ("V09", ic_V09)):
+        sol = run(y0)
+        print(name, "final [S,V,I,R] =", sol.y[:, -1], " sum =", sol.y[:, -1].sum())
+
+# ----- basin of attraction: classification of one initial condition --
+def _ev_dfe(t, y):                 # event: I falls below 1e-9
+    return y[2] - 1e-9
+_ev_dfe.terminal = True
+_ev_dfe.direction = -1
+
+def classify(V0, I0, tmax=80000.0):
+    """Slice R0 = 0, S0 = 1 - V0 - I0.  Returns 1 = endemic, 0 = disease-free.
+    Disease-free if I drops below 1e-9; otherwise endemic if I > 1e-4 at tmax."""
+    if I0 <= 0:
+        return 0
+    y0 = [1 - V0 - I0, V0, I0, 0.0]
+    sol = solve_ivp(rhs, (0.0, tmax), y0, method='LSODA',
+                    rtol=1e-9, atol=1e-14, events=_ev_dfe)
+    if sol.t_events[0].size > 0:
+        return 0
+    return 1 if sol.y[2, -1] > 1e-4 else 0
+
+def separatrix(Vs, Imax_cap=0.03):
+    """For each V0 find the smallest I0 leading to the endemic state, by
+    bisection (geometric when the bracket spans more than a factor 10,
+    relative tolerance 2e-4).  NaN where no endemic start exists in the window."""
+    Ic = np.full(len(Vs), np.nan)
+    for k, V0 in enumerate(Vs):
+        Imax = min(Imax_cap, 1 - V0 - 1e-9)       # keep S0 >= 0
+        if classify(V0, Imax) == 0:
+            continue
+        lo, hi = 1e-12, Imax
+        while hi/lo > 1 + 2e-4:
+            mid = np.sqrt(lo*hi) if hi/lo > 10 else 0.5*(lo + hi)
+            if classify(V0, mid) == 1:
+                hi = mid
+            else:
+                lo = mid
+        Ic[k] = np.sqrt(lo*hi)
+    return Ic
+
+if __name__ == "__main__":
+    # a few points of the separatrix (the full curve used V0 = 0.65:0.0025:0.97)
+    Vs = np.array([0.65, 0.80, 0.90, 0.95])
+    print("I_c at V0 =", Vs, ":", separatrix(Vs))
+
+
+-------------------------------------------------------------------------------
+PART 2: PLOTTING THE TIME SERIES  (Python, Matplotlib)
+-------------------------------------------------------------------------------
+Colors used: S green, V orange, I red, R blue.  Example for one run
+(assumes the code of Part 1 has been run/imported):
+
+    import matplotlib.pyplot as plt
+    sol = run([0.99, 0.0, 0.01, 0.0])           # initial condition (i)
+    T = sol.t; S, V, I, R = sol.y
+    fig, ax = plt.subplots(figsize=(8.5, 5))
+    ax.plot(T, S, c='green',  lw=2, label='S')
+    ax.plot(T, V, c='orange', lw=2, label='V')
+    ax.plot(T, I, c='red',    lw=2, label='I')
+    ax.plot(T, R, c='blue',   lw=2, label='R')
+    ax.set_xlim(0, 3000); ax.set_ylim(0, 1)
+    ax.set_xlabel('t'); ax.set_ylabel('fraction of population')
+    ax.legend(frameon=False, ncol=4, loc='upper right')
+    plt.savefig('sim_phi0085_ic1.png', dpi=160)
+
+Separatrix figure: with Vs = np.arange(0.65, 0.9701, 0.0025) and
+Ic = separatrix(Vs), the curve was drawn with ax.plot(Vs[~np.isnan(Ic)],
+Ic[~np.isnan(Ic)], 'k', lw=2.2), the region above it shaded red (endemic basin)
+and below it shaded green (disease-free basin) using ax.fill_between.
